@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    image: "postgres" # use latest official postgres version
+    env_file:
+      - db.env # configure postgres
+    volumes:
+      - ./db-data:/var/lib/postgresql/data/ # persist data even if container shuts downvolumes:
+
+# We're using named volumes in order to persist our data locally
+# If we commented this section out, every time we close our service no data would be persisted
+# That's why we map db-data on volumes!
+volumes:
+    db-data:
