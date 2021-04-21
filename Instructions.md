@@ -1,4 +1,44 @@
-### GCP on Linux
+### GCP on Ubuntu
+
+Followed this tutorial
+https://cloud.google.com/sdk/docs/install#deb
+
+After following it, initialize gcloud on the CLI (and authenticating it on your pc)
+
+$ gcloud init
+
+CLI Cheatsheet https://itnext.io/gcp-command-line-cheatsheet-5e4434ca2c84
+
+Check if you're on your project and so on:
+$ gcloud info 
+
+
+### Running First Example
+
+Before running the first example we have to activate the Cloud Build API since we're using Python and HTTP requests, for that, go to this link.
+
+FOLLOW THIS LINK BEFORE ANYTHING:
+
+https://cloud.google.com/functions/docs/quickstart-python?hl=pt-br
+
+
+Maybe grant access from Cloud Build to use other services:https://console.cloud.google.com/cloud-build/settings
+
+Create a main.py file (HAS TO BE NAMED THIS WAY, OTHERWISE GCLOUD WON'T RECOGNIZE IT), and the function
+we created inside it is called load_data, so that's what we're going to pass:
+
+`$ gcloud beta functions deploy load_data --runtime python38 --trigger-http`
+
+Go to this URL and see that the function you deployed takes 256 MiB (Python)
+https://console.cloud.google.com/functions/list
+
+### Firestore to trigger Google Functions
+Read about events and triggers:
+https://cloud.google.com/functions/docs/concepts/events-triggers#functions_parameters-python
+Then Implementation
+https://cloud.google.com/functions/docs/calling/cloud-firestore#functions_firebase_firestore-python
+
+
 
 ### GCP on Docker
 
