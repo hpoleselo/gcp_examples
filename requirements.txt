@@ -1,0 +1,4 @@
+# Requirements.txt to run gcloud in our host PC before deployinh to the Cloud
+functions-framework
+sendgrid
+firebase-admin
