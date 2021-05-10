@@ -2,6 +2,28 @@
 
 Cloud Run: setup runtime environment/packages and so on
 
+When running cloud functions using Firebase service or similar, we have to use the credentials, in my case I created an alias to source the env. variable:
+
+` $ gcpenv`
+
+ ``` $ functions-framework --target hello_world --debug```
+
+``` $ gcloud functions deploy set_expense --runtime python38 --trigger-http ```
+
+Schedule a cloud function:
+
+` $ gcloude components install beta`
+
+`$ gcloud components update`
+
+`$ gcloud topics create TOPIC_NAME `
+
+``` $ gclou pubsub subscriptions create cron-sub --topic TOPIC_NAME ```
+
+Deleting cloud functions:
+
+` $ gcloud functions delete FUNCTION_NAME`
+
 ### GCP on Ubuntu
 
 Followed this tutorial
