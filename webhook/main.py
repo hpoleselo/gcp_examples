@@ -3,19 +3,26 @@ def on_repo_change(request):
     Args:
       HTTP Request
     Return:
-      List of the item(s) added to the repo
+      Message saying which kind of push has been made and which files were added/modified/removed
     """
 
-    # We're going to add the functionality to handle the data when it comes as JSON (since we're using Postman to post the JSON payload)
-    # Remembering we cannot pass JSON in the URL but we can in Postman
+    # The context type inside the body response is JSON, so makes sense to get_json()
     request_json = request.get_json()
 
-    #  Get only recent added files from payload
+    #  Get only recent added files from payload or modified files
     added_files = request_json['head_commit']['added']
+    modified_files = request_json['head_commit']['modified']
+    removed_files = request_json['head_commit']['removed']
 
-    if len(added_files) > 0:
+    if added_files:
         for file_name in added_files:
             print(f'{file_name} was added on the repo.')
         return f'Recent pushed files have been detected. Files: {added_files}'
+    elif modified_files:
+        for file_name in modified_files:
+            print(f'{file_name} was modified on the repo.')
+        return f'Recent modified pushed files have been detected. Files: {modified_files}'
     else:
-        return 'Not Okay'
+        for file_name in added_files:
+            print(f'{file_name} was removed from the repo.')
+        return f'Recent removed files from the repo have been detected. Files: {removed_files}'
