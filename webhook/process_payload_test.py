@@ -8,7 +8,7 @@ from github import Github
 def get_repo_content():
     """ Uses Github API module to retrieve content from repo.
     Good reference for it: https://pygithub.readthedocs.io/en/latest/github_objects/ContentFile.html#github.ContentFile.ContentFile """
-    
+
     token = os.getenv('GITHUB_TOKEN', '...')
     file_path = "webhook"
     g = Github(token)
@@ -51,4 +51,5 @@ def test_webhook_payload():
     print(data['head_commit']['added'])
 
 
-get_repo_content()
+test_webhook_payload()
+#get_repo_content()
