@@ -9,7 +9,7 @@ is_local_testing = configuration['local_testing']
 
 if is_local_testing:
     print("Running locally...")
-    creds_path = r"C:\Users\HPOLESE1\Documents\MLOps Platform\ModelValidator\model_validator\mpv_creds.json"
+    creds_path = r"$PATH_TO_YOUR_SERVICE_ACCOUNT_CREDS\mpv_creds.json"
     environ['GOOGLE_APPLICATION_CREDENTIALS'] = creds_path
 
 # Cloud Storage Client
